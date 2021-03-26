@@ -1,23 +1,19 @@
-const faders = document.querySelectorAll('.fade-in');
+window.addEventListener('scroll', reveal);
 
-const appearOptions = {
-    threshold: 1,
+function reveal(){
+    var reveals = document.querySelectorAll('.reveal');
 
-};
-const appearOnScroll = new IntersectionObserver(function(
-    entries, appearOnScroll
-    ) {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            } else {
-                entry.target.classList.add('appear');
-                appearOnScroll.unobserve(entry.target);
-            }
-        });
-    }, 
-    appearOptions);
+    for(var i = 0; i < reveals.length; i++){
+        
+        var windowheight = window.innerHeight;
+        var revealtop = reveals[i].getBoundingClientRect().top;
+        var revealpoint = 150;
 
-faders.forEach(fader => {
-    appearOnScroll.observe(fader);
-});
+        if(revealtop < windowheight - revealpoint){
+            reveals[i].classList.add('active');
+        }
+        else{
+            reveals[i].classList.remove('active');
+        }
+    }
+}

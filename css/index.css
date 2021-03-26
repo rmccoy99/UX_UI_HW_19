@@ -135,12 +135,15 @@ hr {
 }
 
 /* Fade */
-.fade-in {
+.reveal {
+    position: relative;
+    transform: translateY(100px);
     opacity: 0;
-    transition: opacity 250ms ease-in;
+    transition: all 1s ease;
 }
 
-.fade-in.appear {
+.reveal.active {
+    transform: translateY(0px);
     opacity: 1;
 }
 /* Weshop Case Study*/
